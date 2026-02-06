@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root { --primary: #1e88e5; --danger: #e53935; }
-        * { margin:0; padding:0; box-sizing:border-box; }
         body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
         .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 9999; }
         .modal-content { background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 400px; text-align: center; }
@@ -23,7 +22,6 @@
 </head>
 <body>
 
-<!-- অ্যাডমিন লগইন -->
 <div class="modal" id="adminLoginModal">
     <div class="modal-content">
         <h2>অ্যাডমিন লগইন</h2>
@@ -32,7 +30,6 @@
     </div>
 </div>
 
-<!-- অ্যাডমিন প্যানেল -->
 <div id="adminContent" style="display:none;">
     <h1 style="text-align:center;">অ্যাডমিন প্যানেল</h1>
     <button onclick="location.reload()" class="btn btn-danger" style="float:right;">লগআউট</button>
@@ -56,7 +53,7 @@
 <script>
     let products = JSON.parse(localStorage.getItem('products')) || [];
 
-    const ADMIN_PASSWORD = "123456"; // এটা চেঞ্জ করে নিজের পাসওয়ার্ড দিন
+    const ADMIN_PASSWORD = "123456"; // চেঞ্জ করতে পারো
 
     function checkAdmin() {
         if (document.getElementById('adminPass').value === ADMIN_PASSWORD) {
@@ -116,7 +113,7 @@
     });
 
     function deleteProduct(id) {
-        if (confirm('এই প্রোডাক্ট ডিলিট করতে চান?')) {
+        if (confirm('ডিলিট করতে চান?')) {
             products = products.filter(p => p.id !== id);
             localStorage.setItem('products', JSON.stringify(products));
             renderAdminProducts();
