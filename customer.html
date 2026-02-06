@@ -32,101 +32,29 @@
         }
         .logo img { height: 50px; border-radius: 8px; }
         .search-box { flex: 1; max-width: 600px; margin: 8px 0; }
-        .search-box input {
-            width: 100%;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-        }
+        .search-box input { width: 100%; padding: 12px 20px; border: none; border-radius: 50px; font-size: 16px; }
         .header-right { display: flex; align-items: center; gap: 15px; }
-        .login-btn {
-            padding: 8px 16px;
-            background: white;
-            color: var(--primary);
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+        .login-btn { padding: 8px 16px; background: white; color: var(--primary); border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
         .cart-btn { position: relative; font-size: 1.6rem; color: white; cursor: pointer; }
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -10px;
-            background: var(--danger);
-            color: white;
-            font-size: 12px;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
-                        url('https://raw.githubusercontent.com/mdjitu01a/appleside/ffadad432ef60b2b234447e0f98a9a8b4665e5f9/IMG_1260.jpeg');
-            background-size: cover;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-            margin-top: 70px;
-        }
+        .cart-count { position: absolute; top: -8px; right: -10px; background: var(--danger); color: white; font-size: 12px; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://raw.githubusercontent.com/mdjitu01a/appleside/ffadad432ef60b2b234447e0f98a9a8b4665e5f9/IMG_1260.jpeg'); background-size: cover; color: white; text-align: center; padding: 100px 20px; margin-top: 70px; }
         .container { max-width: 1300px; margin: auto; padding: 0 16px; }
-        .categories {
-            display: flex;
-            overflow-x: auto;
-            gap: 12px;
-            padding: 15px 0;
-            background: white;
-            margin: 15px 0;
-            border-radius: 10px;
-        }
-        .cat-item {
-            min-width: 100px;
-            text-align: center;
-            padding: 10px;
-            cursor: pointer;
-        }
+        .categories { display: flex; overflow-x: auto; gap: 12px; padding: 15px 0; background: white; margin: 15px 0; border-radius: 10px; }
+        .cat-item { min-width: 100px; text-align: center; padding: 10px; cursor: pointer; }
         .cat-item.active { background: var(--primary); color: white; border-radius: 10px; }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
-        }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+        .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1); cursor: pointer; }
         .product-img { width: 100%; height: 200px; object-fit: contain; padding: 15px; background: #f8fbff; }
         .product-info { padding: 12px; }
         .product-title { font-size: 0.95rem; font-weight: 600; height: 44px; overflow: hidden; }
         .price { font-size: 1.3rem; font-weight: bold; color: var(--danger); }
         .old-price { text-decoration: line-through; color: #777; font-size: 0.9rem; margin-left: 8px; }
-
+        .buy-btn { background: #25D366; color: white; border: none; padding: 8px 16px; border-radius: 8px; margin-top: 10px; width: 100%; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .buy-btn:hover { background: #20b858; }
         .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 2000; }
         .modal-content { background: white; width: 90%; max-width: 420px; border-radius: 12px; padding: 25px; }
         .close-btn { float: right; font-size: 2rem; cursor: pointer; }
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            color: white;
-            border-radius: 50%;
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 999;
-        }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; font-size: 2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 999; }
     </style>
 </head>
 <body>
@@ -167,7 +95,7 @@
     <div class="product-grid" id="productGrid"></div>
 </div>
 
-<!-- কাস্টমার লগইন মোডাল -->
+<!-- কাস্টমার লগইন মোডাল (ঐচ্ছিক – চাইলে রাখতে পারো) -->
 <div class="modal" id="customerModal">
     <div class="modal-content">
         <span class="close-btn" onclick="document.getElementById('customerModal').style.display='none'">×</span>
@@ -204,21 +132,28 @@
                 <div class="product-info">
                     <div class="product-title">${p.name}</div>
                     <div class="price">৳${p.price} ${p.old ? `<span class="old-price">৳${p.old}</span>` : ''}</div>
+                    <button class="buy-btn" onclick="event.stopPropagation(); buyProduct('${p.name}', ${p.price})">
+                        <i class="fab fa-whatsapp"></i> কিনুন
+                    </button>
                 </div>
             `;
-            card.onclick = () => alert(`আপনি ${p.name} কিনতে চান?`);
+            card.onclick = () => alert(`আপনি ${p.name} দেখতে চান?`);
             grid.appendChild(card);
         });
     }
 
-    // সার্চ
+    function buyProduct(name, price) {
+        const message = `আমি ${name} কিনতে চাই। দাম: ৳${price}`;
+        const whatsappUrl = `https://wa.me/8801713574848?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    }
+
     document.getElementById('searchInput').addEventListener('input', e => {
         const term = e.target.value.toLowerCase().trim();
         const filtered = products.filter(p => p.name.toLowerCase().includes(term));
         renderProducts(filtered);
     });
 
-    // ক্যাটাগরি ফিল্টার
     document.querySelectorAll('.cat-item').forEach(item => {
         item.addEventListener('click', () => {
             document.querySelectorAll('.cat-item').forEach(i => i.classList.remove('active'));
@@ -229,18 +164,13 @@
         });
     });
 
-    // কাস্টমার লগইন
+    // কাস্টমার লগইন (ঐচ্ছিক)
     document.getElementById('customerLoginBtn').onclick = () => {
         document.getElementById('customerModal').style.display = 'flex';
     };
 
     document.getElementById('sendOTPBtn').onclick = () => {
-        const phone = document.getElementById('phoneNumber').value.trim();
-        if (!phone.match(/^\+8801[3-9]\d{8}$/)) {
-            alert('সঠিক ফোন নম্বর দিন (+880 দিয়ে শুরু হবে)');
-            return;
-        }
-        alert(`ডেমো OTP পাঠানো হয়েছে → 123456`);
+        alert('ডেমো OTP পাঠানো হয়েছে → 123456');
         document.getElementById('phoneStep').style.display = 'none';
         document.getElementById('otpStep').style.display = 'block';
     };
@@ -248,17 +178,15 @@
     document.getElementById('verifyOTPBtn').onclick = () => {
         if (document.getElementById('otpCode').value === '123456') {
             alert('লগইন সফল!');
-            document.getElementById('customerLoginBtn').textContent = 'হ্যালো! ' + document.getElementById('phoneNumber').value.slice(-6);
+            document.getElementById('customerLoginBtn').textContent = 'হ্যালো!';
             document.getElementById('customerModal').style.display = 'none';
-            localStorage.setItem('customerLoggedIn', 'true');
         } else {
             alert('ভুল OTP');
         }
     };
 
-    document.getElementById('resendLink').onclick = () => alert('নতুন OTP পাঠানো হয়েছে (123456)');
+    document.getElementById('resendLink').onclick = () => alert('নতুন OTP পাঠানো হয়েছে');
 
-    // প্রথম লোডে প্রোডাক্ট দেখানো
     renderProducts();
 </script>
 
