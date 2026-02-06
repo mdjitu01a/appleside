@@ -1,78 +1,132 @@
-<!-- customer.html - Main Customer Site with OTP Login -->
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>অ্যাপল সাইড - সেরা দামে অরিজিনাল প্রোডাক্ট</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
             --primary: #1e88e5;
             --danger: #e53935;
-            --success: #43a047;
             --light: #f8f9fa;
-            --dark: #212529;
         }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            font-family: Arial, sans-serif;
-            background: var(--light);
-            color: var(--dark);
-        }
+        body { font-family: Arial, sans-serif; background: var(--light); }
         header {
             background: var(--primary);
             color: white;
+            padding: 12px 16px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 12px 16px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
-        .header-inner { max-width: 1300px; margin: auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-        .logo img { height: 54px; border-radius: 8px; }
-        .search-box { flex: 1; max-width: 620px; margin: 10px 0; }
-        .search-box input { width: 100%; padding: 13px 20px; border: none; border-radius: 50px; font-size: 16px; }
+        .header-inner {
+            max-width: 1300px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo img { height: 50px; border-radius: 8px; }
+        .search-box { flex: 1; max-width: 600px; margin: 8px 0; }
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+        }
         .header-right { display: flex; align-items: center; gap: 15px; }
-        .cart-btn { position: relative; font-size: 1.6rem; cursor: pointer; color: white; }
-        .cart-count { position: absolute; top: -6px; right: -10px; background: var(--danger); color: white; font-size: 0.8rem; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .login-btn { padding: 8px 18px; background: white; color: var(--primary); border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
-
-        .hero { background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url('https://raw.githubusercontent.com/mdjitu01a/appleside/ffadad432ef60b2b234447e0f98a9a8b4665e5f9/IMG_1260.jpeg'); background-size: cover; color: white; text-align: center; padding: 120px 20px 90px; margin-top: 70px; }
-        .hero h1 { font-size: 2.8rem; margin-bottom: 16px; }
-        .btn { padding: 14px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2rem; transition: all 0.3s; cursor: pointer; border: none; }
-        .btn-primary { background: var(--danger); color: white; }
-        .btn-primary:hover { background: #c62828; }
-        .btn-success { background: var(--success); color: white; }
-
+        .login-btn {
+            padding: 8px 16px;
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .cart-btn { position: relative; font-size: 1.6rem; color: white; cursor: pointer; }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--danger);
+            color: white;
+            font-size: 12px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+                        url('https://raw.githubusercontent.com/mdjitu01a/appleside/ffadad432ef60b2b234447e0f98a9a8b4665e5f9/IMG_1260.jpeg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-top: 70px;
+        }
         .container { max-width: 1300px; margin: auto; padding: 0 16px; }
-        .categories { display: flex; overflow-x: auto; gap: 16px; padding: 20px 0; background: white; margin: 20px 0; border-radius: 12px; }
-        .cat-item { min-width: 110px; text-align: center; padding: 12px; cursor: pointer; }
-        .cat-item.active { background: var(--primary); color: white; border-radius: 12px; }
-
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
-        .product-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer; }
-        .product-card:hover { transform: translateY(-10px); }
-        .product-img { width: 100%; height: 240px; object-fit: contain; padding: 20px; background: #f0f7ff; }
-        .product-info { padding: 16px; }
-        .product-title { font-size: 1.05rem; font-weight: 600; height: 50px; overflow: hidden; }
-        .price { font-size: 1.4rem; font-weight: bold; color: var(--danger); }
+        .categories {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding: 15px 0;
+            background: white;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        .cat-item {
+            min-width: 100px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .cat-item.active { background: var(--primary); color: white; border-radius: 10px; }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .product-img { width: 100%; height: 200px; object-fit: contain; padding: 15px; background: #f8fbff; }
+        .product-info { padding: 12px; }
+        .product-title { font-size: 0.95rem; font-weight: 600; height: 44px; overflow: hidden; }
+        .price { font-size: 1.3rem; font-weight: bold; color: var(--danger); }
+        .old-price { text-decoration: line-through; color: #777; font-size: 0.9rem; margin-left: 8px; }
 
         .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 2000; }
-        .modal-content { background: white; max-width: 900px; width: 92%; border-radius: 16px; overflow: hidden; padding: 20px; position: relative; }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 2.2rem; cursor: pointer; color: #555; }
-
-        .cart-sidebar { position: fixed; top: 0; right: -380px; width: 380px; height: 100%; background: white; box-shadow: -5px 0 20px rgba(0,0,0,0.2); transition: right 0.4s; z-index: 1500; overflow-y: auto; }
-        .cart-sidebar.open { right: 0; }
-        .cart-header { padding: 20px; background: var(--primary); color: white; display: flex; justify-content: space-between; }
-        .cart-item { display: flex; padding: 15px; border-bottom: 1px solid #eee; }
-        .cart-item img { width: 70px; height: 70px; object-fit: contain; margin-right: 12px; }
-        .cart-total { padding: 20px; border-top: 1px solid #ddd; font-size: 1.3rem; font-weight: bold; }
-        .payment-options { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 15px; }
-        .payment-btn { padding: 10px 18px; background: #e0e0e0; border-radius: 8px; text-decoration: none; font-weight: bold; }
-
-        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; width: 70px; height: 70px; background: #25D366; color: white; border-radius: 50%; font-size: 2.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.25); z-index: 999; }
+        .modal-content { background: white; width: 90%; max-width: 420px; border-radius: 12px; padding: 25px; }
+        .close-btn { float: right; font-size: 2rem; cursor: pointer; }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
     </style>
 </head>
 <body>
@@ -80,7 +134,7 @@
 <header>
     <div class="header-inner">
         <div class="logo">
-            <img src="https://raw.githubusercontent.com/mdjitu01a/appleside/ffadad432ef60b2b234447e0f98a9a8b4665e5f9/IMG_1260.jpeg" alt="অ্যাপল সাইড">
+            <img src="https://raw.githubusercontent.com/mdjitu01a/appleside/ffadad432ef60b2b234447e0f98a9a8b4665e5f9/IMG_1260.jpeg" alt="Apple Side">
         </div>
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="প্রোডাক্ট সার্চ করুন...">
@@ -97,8 +151,8 @@
 
 <div class="hero">
     <h1>স্বাগতম অ্যাপল সাইডে!</h1>
-    <p>সেরা দামে অরিজিনাল প্রোডাক্ট • ফ্রি ডেলিভারি সারাদেশে</p>
-    <a href="#products" class="btn btn-primary">হট ডিল দেখুন</a>
+    <p>সেরা দামে অরিজিনাল প্রোডাক্ট • ফ্রি ডেলিভারি</p>
+    <button class="btn btn-primary">হট ডিল দেখুন</button>
 </div>
 
 <div class="container">
@@ -109,128 +163,100 @@
         <div class="cat-item" data-category="selfie">সেলফি স্টিক</div>
     </div>
 
-    <h2 class="section-title" id="products">হট ডিলস ও বেস্ট সেলার</h2>
+    <h2 class="section-title">হট ডিলস ও বেস্ট সেলার</h2>
     <div class="product-grid" id="productGrid"></div>
 </div>
 
-<!-- কাস্টমার OTP লগইন মোডাল -->
+<!-- কাস্টমার লগইন মোডাল -->
 <div class="modal" id="customerModal">
-    <div class="modal-content" style="max-width:420px;">
-        <span class="close-btn" onclick="document.getElementById('customerModal').style.display='none'">×</span>
-        <h2 style="text-align:center; margin-bottom:20px;">ফোন দিয়ে লগইন</h2>
-        
-        <div id="phoneStep">
-            <input type="tel" id="phoneNumber" placeholder="+8801XXXXXXXXX" style="width:100%; padding:14px; font-size:17px; margin-bottom:15px;">
-            <button id="sendOTPBtn" class="btn btn-primary" style="width:100%; padding:14px;">OTP পাঠান</button>
-        </div>
-        
-        <div id="otpStep" style="display:none;">
-            <input type="text" id="otpCode" placeholder="৬ ডিজিট OTP" maxlength="6" style="width:100%; padding:14px; font-size:24px; text-align:center; letter-spacing:10px; margin-bottom:15px;">
-            <button id="verifyOTPBtn" class="btn btn-success" style="width:100%; padding:14px;">যাচাই করুন</button>
-            <p style="text-align:center; margin-top:12px;"><small id="resendLink" style="color:var(--primary); cursor:pointer;">আবার OTP পাঠান</small></p>
-        </div>
-    </div>
-</div>
-
-<!-- প্রোডাক্ট মোডাল, কার্ট সাইডবার, WhatsApp ফ্লোট (আগের মতো রাখুন) -->
-
-<script>
-    // কাস্টমার লগইন লজিক (আগের মতো রাখুন)
-    // প্রোডাক্ট, কার্ট লজিক (আগের মতো রাখুন)
-</script>
-
-</body>
-</html><!-- admin.html - Separate Admin Panel with Password Login -->
-
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>অ্যাপল সাইড - অ্যাডমিন প্যানেল</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <style>
-        :root {
-            --primary: #1e88e5;
-            --danger: #e53935;
-            --success: #43a047;
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family: Arial, sans-serif; background: #f8f9fa; }
-        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 2000; }
-        .modal-content { background: white; max-width: 400px; width: 90%; border-radius: 16px; padding: 30px; text-align: center; }
-        .btn { padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; border: none; }
-        .btn-primary { background: var(--primary); color: white; }
-        .admin-section { padding: 30px; max-width: 1200px; margin: auto; }
-        form { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 30px; }
-        input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 6px; }
-        .product-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .product-item { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-        .actions button { margin-right: 8px; padding: 8px 16px; cursor: pointer; }
-        .delete-btn { background: var(--danger); color: white; border: none; }
-        #preview img { max-width: 200px; margin-top: 10px; border-radius: 8px; }
-    </style>
-</head>
-<body>
-
-<!-- Admin Login Modal -->
-<div class="modal" id="adminLoginModal" style="display: flex;">
     <div class="modal-content">
-        <h2>অ্যাডমিন লগইন</h2>
-        <input type="password" id="adminPass" placeholder="পাসওয়ার্ড দিন" style="margin:20px 0;">
-        <button onclick="checkAdmin()" class="btn btn-primary" style="width:100%;">লগইন</button>
+        <span class="close-btn" onclick="document.getElementById('customerModal').style.display='none'">×</span>
+        <h2 style="text-align:center;">ফোন দিয়ে লগইন</h2>
+        <div id="phoneStep">
+            <input type="tel" id="phoneNumber" placeholder="+8801XXXXXXXXX" style="width:100%; padding:14px; margin:15px 0;">
+            <button id="sendOTPBtn" class="btn btn-primary" style="width:100%;">OTP পাঠান</button>
+        </div>
+        <div id="otpStep" style="display:none;">
+            <input type="text" id="otpCode" placeholder="৬ ডিজিট OTP" maxlength="6" style="width:100%; padding:14px; font-size:22px; text-align:center; letter-spacing:10px; margin:15px 0;">
+            <button id="verifyOTPBtn" class="btn btn-success" style="width:100%;">যাচাই করুন</button>
+            <p style="text-align:center; margin-top:10px;"><small id="resendLink" style="color:var(--primary); cursor:pointer;">আবার পাঠান</small></p>
+        </div>
     </div>
 </div>
 
-<!-- Admin Panel Section -->
-<div id="adminPanel" class="admin-section" style="display:none;">
-    <h1 style="text-align:center;">অ্যাপল সাইড - অ্যাডমিন প্যানেল</h1>
-    <button onclick="location.reload()" style="float:right; background:#777; color:white; padding:8px 16px; border:none; border-radius:6px;">লগআউট</button>
-
-    <h2>নতুন/এডিট প্রোডাক্ট</h2>
-    <form id="productForm">
-        <input type="hidden" id="editId">
-        <input type="text" id="name" placeholder="প্রোডাক্টের নাম" required>
-        <input type="number" id="price" placeholder="দাম (৳)" required>
-        <input type="number" id="oldPrice" placeholder="আগের দাম (৳)">
-        <input type="text" id="img" placeholder="ইমেজ URL" required>
-        <input type="text" id="category" placeholder="ক্যাটাগরি (airpods / powerbank / selfie)" required>
-        <input type="file" id="imageFile" accept="image/*">
-        <div id="preview"></div>
-        <button type="submit" class="btn btn-success">সেভ করুন</button>
-        <button type="button" onclick="resetForm()" class="btn" style="background:#777; color:white;">ক্লিয়ার</button>
-    </form>
-
-    <h2>সকল প্রোডাক্ট</h2>
-    <div class="product-list" id="adminProductList"></div>
-</div>
+<a href="https://wa.me/8801713574848" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-    let products = JSON.parse(localStorage.getItem('products')) || [
-        { id:1, name:"AirPods Pro 2nd Gen", price:457, old:2500, img:"https://raw.githubusercontent.com/mdjitu01a/appleside/ffadad432ef60b2b234447e0f98a9a8b4665e5f9/IMG_1240.jpeg", category:"airpods" },
-        { id:2, name:"JOYROOM Power Bank", price:999, old:1190, img:"https://raw.githubusercontent.com/mdjitu01a/appleside/ffadad432ef60b2b234447e0f98a9a8b4665e5f9/IMG_1241.jpeg", category:"powerbank" },
-        { id:3, name:"P20S Selfie Stick", price:499, old:550, img:"https://raw.githubusercontent.com/mdjitu01a/appleside/ffadad432ef60b2b234447e0f98a9a8b4665e5f9/IMG_1242.jpeg", category:"selfie" }
-    ];
+    let products = JSON.parse(localStorage.getItem('products')) || [];
 
-    let editingId = null;
-
-    const ADMIN_PASSWORD = "zitu2007@"; // চেঞ্জ করুন
-
-    function saveData() { localStorage.setItem('products', JSON.stringify(products)); }
-
-    function checkAdmin() {
-        const pass = document.getElementById('adminPass').value;
-        if (pass === ADMIN_PASSWORD) {
-            document.getElementById('adminLoginModal').style.display = 'none';
-            document.getElementById('adminPanel').style.display = 'block';
-            renderAdminProducts();
-        } else {
-            alert("ভুল পাসওয়ার্ড!");
+    function renderProducts(filtered = products) {
+        const grid = document.getElementById('productGrid');
+        grid.innerHTML = '';
+        if (filtered.length === 0) {
+            grid.innerHTML = '<p style="text-align:center; grid-column:1/-1; padding:40px;">কোনো প্রোডাক্ট পাওয়া যায়নি</p>';
+            return;
         }
+        filtered.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <img src="${p.img}" class="product-img">
+                <div class="product-info">
+                    <div class="product-title">${p.name}</div>
+                    <div class="price">৳${p.price} ${p.old ? `<span class="old-price">৳${p.old}</span>` : ''}</div>
+                </div>
+            `;
+            card.onclick = () => alert(`আপনি ${p.name} কিনতে চান?`);
+            grid.appendChild(card);
+        });
     }
 
-    // রেন্ডার, এডিট, ডিলিট, রিসেট ফর্ম ফাংশন আগের মতো রাখুন
-    // শুরুতে লোড হলে লগইন দেখাবে
+    document.getElementById('searchInput').addEventListener('input', e => {
+        const term = e.target.value.toLowerCase().trim();
+        const filtered = products.filter(p => p.name.toLowerCase().includes(term));
+        renderProducts(filtered);
+    });
+
+    document.querySelectorAll('.cat-item').forEach(item => {
+        item.addEventListener('click', () => {
+            document.querySelectorAll('.cat-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            const cat = item.dataset.category;
+            const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
+            renderProducts(filtered);
+        });
+    });
+
+    // কাস্টমার লগইন (ডেমো)
+    document.getElementById('customerLoginBtn').onclick = () => {
+        document.getElementById('customerModal').style.display = 'flex';
+    };
+
+    document.getElementById('sendOTPBtn').onclick = () => {
+        const phone = document.getElementById('phoneNumber').value.trim();
+        if (!phone.match(/^\+8801[3-9]\d{8}$/)) {
+            alert('সঠিক ফোন নম্বর দিন (+880 দিয়ে শুরু হবে)');
+            return;
+        }
+        alert(`ডেমো OTP পাঠানো হয়েছে → 123456`);
+        document.getElementById('phoneStep').style.display = 'none';
+        document.getElementById('otpStep').style.display = 'block';
+    };
+
+    document.getElementById('verifyOTPBtn').onclick = () => {
+        if (document.getElementById('otpCode').value === '123456') {
+            alert('লগইন সফল!');
+            document.getElementById('customerLoginBtn').textContent = 'হ্যালো! ' + document.getElementById('phoneNumber').value.slice(-6);
+            document.getElementById('customerModal').style.display = 'none';
+        } else {
+            alert('ভুল OTP');
+        }
+    };
+
+    document.getElementById('resendLink').onclick = () => alert('নতুন OTP পাঠানো হয়েছে (123456)');
+
+    // প্রথম লোডে প্রোডাক্ট দেখানো
+    renderProducts();
 </script>
 
 </body>
